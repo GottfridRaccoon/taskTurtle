@@ -1,23 +1,29 @@
 class Turtle {
-	constructor() {
-		this.run = 0
-		this.counter = 0
+	running = true
+	run = 0
+	counter = 0
+
+
+
+	checkRunning(val) {
+		this.run += val
+		if (this.run > 100) this.running = false
 	}
 	upAtMorning() {
-		this.run += 50
+		this.checkRunning(50)
 	}
 	downAtNight() {
-		this.run -= 30
+		this.checkRunning(-30)
 	}
 }
 class RunCount extends Turtle {
-	constructor(run, counter) {
-		super(run, counter)
+	constructor(run, counter, running) {
+		super(run, counter, running)
 	}
 
 	countDays = () => {
 
-		for (let i = 0; this.run < 100; i++) {
+		for (let i = 0; this.running; i++) {
 			super.upAtMorning()
 			super.downAtNight()
 			++this.counter
